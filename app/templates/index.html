@@ -1,0 +1,17 @@
+{% extends 'bootstrap/base.html'%} 
+{% block styles %}
+ {{super()}}
+{% endblock %}
+
+{% block content%}
+<div class="container">
+<div class="card">
+    <div class="card-body">
+      <h1 class="card-title text-center">Quotzz</h1>
+      <p><strong>Quote:</strong>{{quote.quote}}</p>
+      <small><strong>Author:</strong>{{quote.author}}</small>
+    </div>
+  </div>
+</div>
+
+{% endblock%}
