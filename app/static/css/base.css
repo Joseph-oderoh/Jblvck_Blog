@@ -1,0 +1,45 @@
+body{
+    background-image: url("https://wallpaperaccess.com/full/1560437.jpg");
+    background-size: cover; 
+    
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    font-family: 'poppins';
+    font-size: 20px;
+
+}
+nav{
+    background-color:rgba(128, 128, 128, 0.562);
+
+}
+.lgo{
+    font-size: 30px;
+    font-family: Inspiration;
+    color: blue;
+    font-weight: 900;
+}
+.quote{
+    background-color: grey;
+    padding: 20px;
+    margin-top: 50px;
+    width: fit-content;
+    color: white;
+    font-size: 20px;
+    border-radius: 45px;
+    font-family:  monospace;
+    
+}
+.quote:hover{
+    border: 2px solid black;
+    border-radius: 45px;
+    background-color: wheat;
+    color: black;
+    box-shadow: 5px 5px 5px green;
+}
+strong{
+    color: black;
+    font-family: Eczar;
+}

@@ -1,18 +1,16 @@
-{% extends 'bootstrap/base.html'%} 
+{% extends 'base.html'%} 
 {% block styles %}
  {{super()}}
  <link href="{{url_for('static',filename='css/index.css')}}" rel="stylesheet" />
 {% endblock %}
 
 {% block content%}
-<div class="container quotzz">
-<div class="card">
-    <div class="card-body">
-      <h1 class="card-title text-center">Quotzz</h1>
-      <p class="quote"><strong>Quote:</strong>{{quote.quote}}</p>
+
+<div class="card quote">
+    <div class="card-body bg-dark ">
+      <h3 class="card-title text-center">Quotzz</h3>
+      <p ><strong>Quote:</strong>{{quote.quote}}</p>
       <small><strong>Author:</strong>{{quote.author}}</small>
     </div>
   </div>
-</div>
-
 {% endblock%}
