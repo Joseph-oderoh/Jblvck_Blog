@@ -51,7 +51,7 @@ class Comment(db.Model):
     __tablename__='comments'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String)
-    date_posted= db.Column(db.DateTime,default=datetime.utcnow)
+    date_created= db.Column(db.DateTime,default=datetime.utcnow)
     blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     def save_c(self):
