@@ -41,7 +41,7 @@ def blog(blog_id):
 @login_required
 def update_blog(blog_id):
     blog=Blog.query.filter_by(id=blog_id).first()
-    if blog.author.id !=current_user.id:
+    if blog.user != current_user:
         abort(403)
 
     form=FormBlog()
@@ -61,7 +61,7 @@ def update_blog(blog_id):
 @login_required
 def delete_blog(blog_id):
     blog=Blog.query.filter_by(id=blog_id).first()
-    if blog.author.id !=current_user.id:
+    if blog.user != current_user:
         abort(403)
     db.session.delete(blog)
     db.session.commit()
