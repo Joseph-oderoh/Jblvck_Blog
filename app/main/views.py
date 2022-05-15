@@ -3,7 +3,7 @@ import flask_login
 from . import main
 from .Forms import CommentForm,UpdateProfile,BlogForm
 from ..requests import get_quote
-from ..models import Quotes,Comment,Blogs,User
+from ..models import Quotes,Comment,Blog,User
 from flask import render_template,redirect,url_for,abort,request,flash
 from flask_login import login_required,current_user
 from .. import db,photos
@@ -33,7 +33,7 @@ def new_blog():
     if form.validate_on_submit():
         title = form.title.data
         content = form.content.data
-        new_blog= Blogs(title=title, content=content,user_id=current_user.id)
+        new_blog= Blog(title=title, content=content,user_id=current_user.id)
         new_blog.save_blogs()
         flash('Your blog has been Created','Success')
         return redirect(url_for('main.index'))
@@ -41,7 +41,7 @@ def new_blog():
 
 @main.route('/blog/<blog_id>', methods=['GET','POST'])
 def blog(blog_id):
-    blog=Blogs.query.filter_by(id=blog_id).first()
+    blog=Blog.query.filter_by(id=blog_id).first()
     print(blog)
     return render_template('blog.html',blog=blog)
 @main.route('/user/<name>/updateprofile', methods = ['POST','GET'])
@@ -63,7 +63,7 @@ def updateprofile(name):
 @main.route('/blog/<blog_id>/update',methods=['GET', 'POST'])
 @login_required
 def update_blog(blog_id):
-    blog=Blogs.query.filter_by(id=blog_id).first()
+    blog=Blog.query.filter_by(id=blog_id).first()
     if blog.author.id !=current_user.id:
         abort(403)
 
@@ -83,7 +83,7 @@ def update_blog(blog_id):
 @login_required
 def comments(blog_id):
     comments = Comment.query.filter_by(blog_id=blog_id).all()
-    blog = Blogs.query.get(blog_id)
+    blog = Blog.query.get(blog_id)
     form = CommentForm()
     if blog is None:
         abort(404)

@@ -2,15 +2,20 @@ from datetime import datetime
 from . import db
 from flask_login import  UserMixin,current_user
 from werkzeug.security import generate_password_hash,check_password_hash
+from . import login_manager
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 class User(UserMixin ,db.Model):
-    __tablename__='user'
+    __tablename__='users'
     id= db.Column(db.Integer, primary_key=True) 
     username = db.Column(db.String , unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     bio = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
-    blogs = db.relationship('Blogs', backref='author', lazy = 'dynamic')
+    blog = db.relationship('Blogs', backref='user', lazy = 'dynamic')
+    comment = db.relationship('Comment', backref='user', lazy='dynamic')
     @property
     def password(self):
         raise AttributeError('You cannnot read the password attribute')
@@ -23,16 +28,16 @@ class User(UserMixin ,db.Model):
     def verify_password(self,password):
         return check_password_hash(self.password_hash,password)
     
-class Blogs(db.Model):  
-    __tablename__='blog'
+class Blog(db.Model):  
+    __tablename__='blogs'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
     content = db.Column(db.String())
     date_created=db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) 
-    comments = db.relationship('comment',backref='blog' ,lazy='dynamic' )
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
+    comment = db.relationship('comment',backref='blog' ,lazy='dynamic' )
     
-    def save_blogs(self):
+    def save_blog(self):
         db.session.add(self)
         db.session.commit()
     def repr(self):
@@ -44,8 +49,8 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String)
     date_posted= db.Column(db.DateTime,default=datetime.utcnow)
-    blog_id= db.Column(db.ForeignKey("blog.id")) 
-    user_id= db.Column(db.ForeignKey("user.id")) 
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
     
     def save_c(self):
         db.session.add(self)
