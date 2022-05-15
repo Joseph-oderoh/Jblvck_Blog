@@ -13,4 +13,17 @@
       <small><strong>Author:</strong>{{quote.author}}</small>
     </div>
   </div>
+  <div class="card" style="width: 18rem;">
+
+    {% for blog in blogs %}
+    <div class="card-body">
+      <h5 class="card-title"><a href="{{url_for('main.blog',blog_id = blog.id)}}" >{{ blog.title}}</a></h5>
+      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+      <p>{{ blog.content|safe }}</p>
+      <p><b>{{ blog.author }}</b></p>
+      <p class="panel-text"><strong>Created on: <span class="badge rounded-pill bg-warning text-dark">
+        {{ blog.date_created.strftime("%m/%d/%Y")}}</span></strong> </p>
+    </div>
+    {% endfor %}
+  </div>
 {% endblock%}
