@@ -14,8 +14,11 @@ class User(UserMixin ,db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     bio = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
-    blog = db.relationship('Blogs', backref='user', lazy = 'dynamic')
-    comment = db.relationship('Comment', backref='user', lazy='dynamic')
+    blogs = db.relationship('Blog', backref='user', lazy = 'dynamic')
+    
+    def save_user(self):
+        db.session.add(self)
+        db.session.commit()
     @property
     def password(self):
         raise AttributeError('You cannnot read the password attribute')
@@ -35,7 +38,7 @@ class Blog(db.Model):
     content = db.Column(db.String())
     date_created=db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id')) 
-    comment = db.relationship('comment',backref='blog' ,lazy='dynamic' )
+    comment = db.relationship('Comment',backref='blog' ,lazy='dynamic' )
     
     def save_blog(self):
         db.session.add(self)
@@ -49,9 +52,8 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String)
     date_posted= db.Column(db.DateTime,default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    blog_id = db.Column(db.Integer, db.ForeignKey('blogs.id'))
-    
+    blog_id = db.Column(db.Integer,db.ForeignKey("blogs.id"))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     def save_c(self):
         db.session.add(self)
         db.session.commit()
