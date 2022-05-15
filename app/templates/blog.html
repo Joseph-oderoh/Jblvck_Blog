@@ -1,7 +1,13 @@
-{% extends 'base.html'%} 
+{% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf%}
+
+{%block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename= 'css/index.css')}}">
+{%endblock %}
 {% block content %}
-  <div  class="container">
+ <body>
+  <div  class="container blg">
     
     <div class="card mt-3 " id="display1">
         
@@ -15,5 +21,21 @@
     </div>
     </div>
     
+  
+
+  <div class="container text-white" id="footer">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="container text-center">
+          <p class="text-white"><b>oderohk@gmail.com</b></p>
+          <p><b>&copy; 2022</b></p>
+          <p><b>Made with<span class="fa fa-heart" style="color: red;" aria-hidden="true"></span></b></p>
+        </div>
+      </div>
+    
   </div>
-  {% endblock%}
+  </div>
+</div>
+ </body> 
+ {%endblock%}
+  </div>

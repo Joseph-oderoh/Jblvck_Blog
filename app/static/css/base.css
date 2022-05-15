@@ -43,3 +43,39 @@ strong{
     color: black;
     font-family: Eczar;
 }
+.prof{
+    background-color: rgba(245, 237, 237, 0.39);
+    border-radius: 45px;
+    margin-top: 50px;
+    padding: 20px;
+    font-weight: 700;
+}
+.updt{
+    background-color: rgba(245, 237, 237, 0.39);
+    border-radius: 45px;
+    margin-top: 50px;
+    padding: 20px;
+    font-weight: 700
+}
+.log{
+    background-color: rgba(245, 237, 237, 0.39);
+    border-radius: 45px;
+    margin-top: 50px;
+    padding: 20px;
+    font-weight: 700
+
+}
+.reg{
+    background-color: rgba(253, 253, 253, 0.829);
+    border-radius: 45px;
+    margin-top: 50px;
+    padding: 20px;
+    font-weight: 700
+}
+.blg{
+    background-color: rgba(253, 253, 253, 0.829);
+    border-radius: 45px;
+    margin-top: 50px;
+    padding: 20px;
+    font-weight: 700
+}
