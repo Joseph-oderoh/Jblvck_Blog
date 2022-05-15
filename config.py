@@ -31,7 +31,7 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
     
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:oderoh@localhost/jkblog'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://qteqfmkfxbajji:0992358cf0406df0354201f3de19624228a6519cf333469d67f309b811ce2813@ec2-3-229-11-55.compute-1.amazonaws.com:5432/d9rvmqin9pm26k'
     DEBUG = True
     
 config_options = {
