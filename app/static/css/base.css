@@ -80,9 +80,10 @@ strong{
     font-weight: 700
 }
 .blogt{
-    background-color: rgba(253, 253, 253, 0.829);
+    background-color: rgba(183, 179, 179, 0.829);
     border-radius: 45px;
     margin-top: 50px;
     padding: 20px;
-    font-weight: 700
+    font-weight: 700;
+    border-bottom: 2px;
 }

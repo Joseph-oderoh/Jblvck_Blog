@@ -1,6 +1,6 @@
 {% extends 'base.html'%}
 {% block content %}
-<div class="container blogt" id ="">
+<div class="container" id ="blogt">
 
 
 <div class="row">
@@ -17,29 +17,27 @@
                       blog.date_created.strftime("%m/%d/%Y")}}</span></strong> <br>
                       <a href="{{ url_for('main.comments', blog_id = blog.id)}}"><i class="fa fa-comments"
                         aria-hidden="true"></i>comment</a>
-                        <a href="{{ url_for('main.update_blog', blog_id = blog.id)}}"><i class="fas fa-edit"></i></i>Edit</a>
-                          <a href="{{ url_for('main.delete_blog', blog_id = blog.id)}}"><i class="far fa-trash-alt"></i>Delete Blog</a>
+                        <a href="{{ url_for('main.update_blog', blog_id = blog.id)}}">Edit</a>
+                          <a href="{{ url_for('main.delete_blog', blog_id = blog.id)}}">Delete Blog</a>
 
           </p>
 
         </div>
       </div>
     </div>
-    <div class="col-md-3"></div>
-
   </div>
 </div>
+
 
   <div class="container " id="footer">
     <div class="row">
       <div class="col-md-12">
         <div class="container text-center" id="socials">
-          <p><b>rhonajoy8@gmail.com</b></p>
-          <p><b>&copy; 2021</b></p>
+          <p><b>oderohk@gmail.com</b></p>
+          <p><b>&copy; 2022</b></p>
           <p><b>Made with<span class="fa fa-heart" style="color: red;" aria-hidden="true"></span></b></p>
         </div>
       </div>
-    
+    </div>
   </div>
-  </div>
-  {% endblock %}
+ {% endblock%}
