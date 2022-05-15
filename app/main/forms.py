@@ -7,6 +7,7 @@ class FormBlog(FlaskForm):
   title = StringField('Blog Title', validators=[InputRequired(), Length(1, 64)])
   author = StringField('Author : ',)
   category = RadioField('Blog Category :', choices = [('Health & Fitness', 'Health & Fitness'),  ('Entertinment', ' Entertainment'), ('Technology', 'Technology')], validators = [InputRequired()])
+  content = TextAreaField('Your Blog', validators=[InputRequired()])
   submit = SubmitField('Post')
   
   

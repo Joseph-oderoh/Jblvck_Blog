@@ -1,5 +1,5 @@
 from . import main
-from .forms import CommentForm, FormBlog,UpdateProfile,FormBlog
+from .forms import CommentForm,UpdateProfile,FormBlog
 from ..requests import get_quote
 from ..models import Quotes,Comment,Blog,User
 from flask import render_template,redirect,url_for,abort,request,flash
@@ -12,9 +12,9 @@ def index():
      View root page function that returns the index page and its data
     """
     title = 'Welcome to the JBlvck_Blog home of the best Information in the net'
-    
+    blog = Blog.query.order_by(Blog.date_created).all()
     quote=get_quote()
-    return render_template('index.html', title=title, quote =quote)
+    return render_template('index.html', title=title, quote =quote,blog=blog )
 
 
 @main.route('/createblog', methods=['GET', 'POST'])
@@ -25,7 +25,7 @@ def new_blog():
         title = form.title.data
         content = form.content.data
         new_blog= Blog(title=title, content=content,user_id=current_user.id)
-        new_blog.save_blogs()
+        new_blog.save_blog()
         flash('Your blog has been Created','Success')
         return redirect(url_for('main.index'))
     return render_template('blog.html', title='New Post',form = form)
@@ -34,9 +34,9 @@ def new_blog():
 def blog(blog_id):
     blog=Blog.query.filter_by(id=blog_id).first()
     print(blog)
-    return render_template('blogt.html',blog=blog)
+    return render_template('blogcont.html',blog=blog)
 
-# updating a blog
+
 @main.route('/blog/<blog_id>/update',methods=['GET', 'POST'])
 @login_required
 def update_blog(blog_id):
@@ -88,7 +88,14 @@ def comments(blog_id):
             flash('Your comment has been posted successfully!','success')
     return render_template('comments.html',blogs= blog, comment=comments, form = form)
 
-
+@main.route('/comment/<comment_id>', methods=['POST','GET'])
+def delete_comment(comment_id):
+    comment = Comment.query.filter_by(id = comment_id).first()
+    blog_id = comment.blog_id
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Your comment has been deleted successfully!','success')
+    return redirect(url_for('.blog',blog_id = blog_id))
 
 
 
