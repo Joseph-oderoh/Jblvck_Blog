@@ -88,3 +88,6 @@ strong{
     border-bottom: 2px;
 }
 
+.text a{
+    text-decoration: none;
+}

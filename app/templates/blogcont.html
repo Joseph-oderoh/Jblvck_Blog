@@ -16,12 +16,11 @@
           <p>{{ blog.content }}</p>
           
 
-          <p class="panel-text"><strong>Created on: <span class="badge rounded-pill bg-warning text-dark">{{
+          <p><strong>Created on: <span class="badge rounded-pill bg-warning text-dark">{{
                       blog.date_created.strftime("%m/%d/%Y")}}</span></strong> <br>
-                      <a href="{{ url_for('main.comments', blog_id = blog.id)}}"><i class="fa fa-comments"
-                        aria-hidden="true"></i>comment</a>
-                        <a href="{{ url_for('main.update_blog', blog_id = blog.id)}}">Edit</a>
-                          <a href="{{ url_for('main.delete_blog', blog_id = blog.id)}}">Delete Blog</a>
+                      <button class="btn btn-success"><a class="text" href="{{ url_for('main.comments', blog_id = blog.id)}}">comment</a></button>
+                      <button class="btn btn-success"><a href="{{ url_for('main.update_blog', blog_id = blog.id)}}">Edit</a></button>
+                        <button class="btn btn-success"><a href="{{ url_for('main.delete_blog', blog_id = blog.id)}}">Delete Blog</a></button>
 
           </p>
 

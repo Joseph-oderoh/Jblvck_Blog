@@ -14,7 +14,7 @@ class User(UserMixin ,db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     bio = db.Column(db.String(255))
     password_hash = db.Column(db.String(255))
-    blogs = db.relationship('Blog', backref='user', lazy = 'dynamic')
+    blog = db.relationship('Blog', backref='user', lazy = 'dynamic')
     
     def save_user(self):
         db.session.add(self)
