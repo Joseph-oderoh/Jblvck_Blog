@@ -16,7 +16,7 @@
   <div class=" blogt" style="width: 100rem;">
 
     {% for blog in blog %}
-    <div class="container blog1">
+    <div class="">
       <h2 class="card-subtitle mb-2 text-muted"><a href="{{url_for('main.blog',blog_id = blog.id)}}" >{{ blog.title}}</a></h2>
       <p>{{ blog.content|safe }}</p>
       <p><b>{{ blog.author }}</b></p>
