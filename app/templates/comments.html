@@ -1,28 +1,26 @@
 {% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf %}
-{% block styles %} {{super()}}
-<link href="{{url_for('static',filename='css/comment.css')}}" rel="stylesheet" />
-{% endblock %}
+
 
 
 {% block content %}
  <body>
-  <div class="jumbotron  bg-warning mt-3">
+  <div class="jumbotron  bg-info mt-3">
     <div class="container">
-    <h1 class="display-4">Comments Form</h1>
+    <h1 class="display-6 text-info text-center">Comments</h1>
    
     </div>
-</div>
+
   
-  <div  class="container">
+  <div  class="container ">
     <div class="row">
-      <div class="col-md-4" id ="comments1">
+      <div class="col-md-4 comt" id ="comments1">
         {{wtf.quick_form(form)}}
       </div>
    
       {% for comment in comment %}
       <div class="col-md-4">
-        <div class="card w-20 m-1 p-2"  id ="comments1"> 
+        <div class="card bg-white"> 
           <p>Comment:<strong>{{ comment.content }}</strong></p>
               <p>Date Posted :<strong>{{ comment.date_created}}</strong></p>
               
@@ -31,5 +29,6 @@
           </div>
           {% endfor %}
       </div>
-
+    </div>
+  </div>
     {% endblock%}

@@ -87,3 +87,19 @@ strong{
     font-weight: 700;
     border-bottom: 2px;
 }
+.blog1{
+    background-color: rgba(38, 36, 36, 0.829);
+    border-radius: 45px;
+    margin-top: 50px;
+    padding: 20px;
+    font-weight: 700;
+    border-bottom: 2px;
+}
+.comt{
+    background-color: rgba(38, 36, 36, 0.829);
+    border-radius: 45px;
+    margin-top: 50px;
+    padding: 20px;
+    font-weight: 700;
+    border-bottom: 2px;
+}

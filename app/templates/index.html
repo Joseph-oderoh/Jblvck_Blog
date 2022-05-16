@@ -13,10 +13,10 @@
       <small><strong>Author:</strong>{{quote.author}}</small>
     </div>
   </div>
-  <div class="card blogt" style="width: 100rem;">
+  <div class=" blogt" style="width: 100rem;">
 
     {% for blog in blog %}
-    <div class="">
+    <div class="container blog1">
       <h2 class="card-subtitle mb-2 text-muted"><a href="{{url_for('main.blog',blog_id = blog.id)}}" >{{ blog.title}}</a></h2>
       <p>{{ blog.content|safe }}</p>
       <p><b>{{ blog.author }}</b></p>
@@ -25,18 +25,19 @@
         <a href="{{ url_for('main.comments', blog_id = blog.id)}}">comment</a>
     </div>
     {% endfor %}
-  </div>
-
-
-  <div class="container " id="footer">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="container text-center" id="socials">
-          <p><b>oderohk@gmail.com</b></p>
-          <p><b>&copy; 2022</b></p>
-          <p><b>Made with<span class="fa fa-heart" style="color: red;" aria-hidden="true"></span></b></p>
+    <div class="container " id="footer">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="container text-center" id="socials">
+            <p><b>oderohk@gmail.com</b></p>
+            <p><b>&copy; 2022</b></p>
+            <p><b>Made with<span class="fa fa-heart" style="color: red;" aria-hidden="true"></span></b></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+
+ 
 {% endblock%}
