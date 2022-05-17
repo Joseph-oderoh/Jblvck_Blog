@@ -14,18 +14,13 @@ class Config:
     
 class ProdConfig(Config):
    
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL").replace("://", "ql://", 1) 
+   URI= os.getenv('DATABASE_URL')
+   if URI and URI.startswith('postgres://'):
+        URI = URI.replace('postgres://', 'postgresql://', 1)
+        
+   SQLALCHEMY_DATABASE_URI = URI
     
-    
-    # email configurations
-    MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    SUBJECT_PREFIX = 'upitch'
-    DEBUG = True
-
+   
 
 class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:oderoh@localhost/jkblog'
